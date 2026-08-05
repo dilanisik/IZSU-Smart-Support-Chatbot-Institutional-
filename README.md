@@ -13,9 +13,10 @@ kullanıcı sorgusunu otomatik yönlendiren (router) hibrit bir destek chatbot'u
 |---|---|---|
 | 1 | Gereksinim analizi, mimari tasarım, veri şeması | ✅ Tamamlandı |
 | 2 | Docker Compose, PostgreSQL, Qdrant, Python ortamı | ✅ Tamamlandı |
-| 3 | Proje iskeleti, config/logging altyapısı | 🔄 Devam ediyor |
+| 3 | Proje iskeleti, config/logging altyapısı | ✅ Tamamlandı |
+| 4 | Sentetik veri üretimi | 🔄 Devam ediyor |
 
-## Klasör Yapısı
+## Klasör Yapısı🔄 
 
 ```
 rag-app/
