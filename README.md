@@ -1,5 +1,12 @@
 # IZSU-Smart-Support-Chatbot-Institutional-
 This project is an AI-powered internal support chatbot developed for İZSU employees. It leverages a Hybrid Retrieval-Augmented Generation (Hybrid RAG) architecture by combining structured SQL queries with semantic document retrieval to provide accurate and context-aware responses.
+
+
+
+<img width="956" height="685" alt="image" src="https://github.com/user-attachments/assets/49fcae73-6590-4936-95d6-8e28b1d21bc8" />
+
+
+
 # Hibrit RAG Uygulaması — İZSU Kurum İçi Akıllı Destek Chatbot
 
 Yapılandırılmış veri (PostgreSQL) sorgulama ile doküman tabanlı RAG'i (Qdrant) birleştiren,
