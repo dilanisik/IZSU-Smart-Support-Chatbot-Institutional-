@@ -1,0 +1,14 @@
+langchain
+langchain-openai
+openai
+qdrant-client
+sqlalchemy
+psycopg2-binary
+streamlit
+starlette<1.0
+faker
+pandas
+numpy
+python-dotenv
+pydantic-settings
+ragas
