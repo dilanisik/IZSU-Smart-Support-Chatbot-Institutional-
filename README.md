@@ -61,7 +61,7 @@ python test_baglanti.py
 streamlit run app.py
 ```
 
-## Teknoloji Yığını
+## Teknolojiler
 
 - **LLM & Embedding:** OpenAI API (ileride Google Gemini'ye geçiş değerlendiriliyor)
 - **Vektör veritabanı:** Qdrant
