@@ -9,6 +9,27 @@ from config import settings
 from logging_config import get_logger
 from dateutil.relativedelta import relativedelta
 
+fake = Faker("tr_TR")
+Faker.seed(42)
+random.seed(42)
+
+SU_KADEMELERI = [
+    (6, 25.00),
+    (15, 32.00),
+    (float("inf"), 40.00),
+]
+
+ATIKSU_ORANI = 0.5 #atıksu bedeli = su bedelinin %50'si (varsayım)
+KDV_SU_ORANI = 0.01 #yüzde 1
+KDV_ATIKSU_ORANI = 0.10 #Atıksu üzerinden yüzde 10 oran
+GECIKME_ZAM_ORANI = 0.025 #AYLIK YUZDE 2.5
+
+IZMIR_ILCELERI = ["Konak", "Karşıyaka", "Bornova", "Buca", "Çiğli", "Gaziemir", "Bayraklı", "Güzelbahçe", "Narlıdere", "Balçova", "Karabağlar", "Menemen", "Aliağa", "Foça", "Seferihisar",
+                   "Urla", "Dikili", "Bergama", "Kınık", "Ödemiş", "Tire", "Selçuk", "Menderes", "Torbalı", "Kemalpaşa", "Sasalı", "Karaburun", "Çeşme", "Beydağ", "Bayındır", "Kiraz", "Menemen", "Aliağa"]
+MAHALLE_KOKLERI = ["Cumhuriyet", "Atatürk", "Barış", "Yeşiltepe", "Çamlık", "Fatih", "Yıldız", "Güzeltepe", "Hürriyet", "İstiklal", "Kurtuluş", "Sakarya", "Şehitler", "Bahçelievler", "Gazi", "Mevlana", "Mimar Sinan", "Namık Kemal", "Ortaköy", "Pınarbaşı"]
+SOKAK_KOKLERI = ["Gül", "Menekşe", "Lale", "Zeytin", "Çınar", "Akasya", "Manolya", "Defne", "Kavak", "Sedir", "Karanfil", "Söğüt", "Ihlamur", "Kestane", "Mimoza", "Sarıyer", "Beyazıt", "Topkapı", "Fenerbahçe", "Kadıköy"]
+
+
 def mevsim_carpani(ay_numarasi: int) -> float:
     if ay_numarasi in (6, 7, 8):        # yaz -> tüketim artar
         return random.uniform(1.3, 1.6)
@@ -22,15 +43,26 @@ def outlier_carpani() -> float:
         return random.uniform(3.0, 6.0)
     return 1.0    
 
-IZMIR_ILCELERI = ["Konak", "Karşıyaka", "Bornova", "Buca", "Çiğli", "Gaziemir", "Bayraklı", "Güzelbahçe", "Narlıdere", "Balçova", "Karabağlar", "Menemen", "Aliağa", "Foça", "Seferihisar",
-                   "Urla", "Dikili", "Bergama", "Kınık", "Ödemiş", "Tire", "Selçuk", "Menderes", "Torbalı", "Kemalpaşa", "Sasalı", "Karaburun", "Çeşme", "Beydağ", "Bayındır", "Kiraz", "Menemen", "Aliağa"]
-MAHALLE_KOKLERI = ["Cumhuriyet", "Atatürk", "Barış", "Yeşiltepe", "Çamlık", "Fatih", "Yıldız", "Güzeltepe", "Hürriyet", "İstiklal", "Kurtuluş", "Sakarya", "Şehitler", "Bahçelievler", "Gazi", "Mevlana", "Mimar Sinan", "Namık Kemal", "Ortaköy", "Pınarbaşı"]
-SOKAK_KOKLERI = ["Gül", "Menekşe", "Lale", "Zeytin", "Çınar", "Akasya", "Manolya", "Defne", "Kavak", "Sedir", "Karanfil", "Söğüt", "Ihlamur", "Kestane", "Mimoza", "Sarıyer", "Beyazıt", "Topkapı", "Fenerbahçe", "Kadıköy"]
+def su_bedeli_hesaplama(tuketim_m3: float) -> float:
+    """ KADEMELİ TARİFE: Tüketimin tamamı, girdiği kademenin birim fiyatından hesaplanır."""
+    for esik, birim_fiyat in SU_KADEMELERI:
+         if tuketim_m3 <=esik : #alt esige göre birim fiyatiyla carpip su bedelini döndürür
+           return round(tuketim_m3 * birim_fiyat, 2)
+         
+def fatura_hesaplama(tuketim_m3: float, gecikme_gun: int =0 ) -> dict:
+    su_bedeli = su_bedeli_hesaplama(tuketim_m3)
+    atiksu_bedeli = round(su_bedeli * ATIKSU_ORANI, 2)
+    kdv_su = round(su_bedeli * KDV_SU_ORANI , 2)
+    kdv_atiksu = round(atiksu_bedeli * KDV_ATIKSU_ORANI, 2 )
+    toplam = su_bedeli + atiksu_bedeli + kdv_su + kdv_atiksu
 
-fake = Faker("tr_TR")
-Faker.seed(42)
-random.seed(42)
+    gecikme_zammi = 0.0
+    if gecikme_gun > 0: 
+        gecikme_zammi = toplam * GECIKME_ZAM_ORANI * (gecikme_gun / 30)
 
+    return round(toplam + gecikme_zammi, 2)
+    
+    
 musteriler = []
 for i in range(500):
     musteriler.append({
@@ -82,18 +114,26 @@ faturalar = []
 for tuketim_kaydı in su_tuketimi:
     tuketim = tuketim_kaydı["tuketim_m3"]
     okuma_tarihi = tuketim_kaydı["okuma_tarihi"]
-    birim_fiyat = 25.50  # TL/m3 -varsayım
+    son_odeme_tarihi = okuma_tarihi + timedelta(days = 20)
+    odendi_mi=random.choices([True, False], weights=[75, 25])[0]  # BOOLEAN
+
+    gecikme_gun= 0
+    if not odendi_mi and son_odeme_tarihi < date.today():
+        gecikme_gun = (date.today() - son_odeme_tarihi).days
+
+    hesap = fatura_hesaplama(tuketim, gecikme_gun)
 
     faturalar.append({
         "donem": okuma_tarihi.replace(day=1),          
         "tuketim_m3": tuketim,                          
-        "tutar": round(tuketim * birim_fiyat, 2),        
-        "son_odeme_tarihi": okuma_tarihi + timedelta(days=20),
-        "odendi_mi": random.choices([True, False], weights=[75, 25])[0],  # BOOLEAN
+        "tutar": hesap,
+        "son_odeme_tarihi": son_odeme_tarihi,
+        "odendi_mi":odendi_mi,
     })
     
-print(len(faturalar))
-
+df_faturalar = pd.DataFrame(faturalar)
+df_faturalar.to_csv("faturalar.csv", index=False, encoding="utf-8-sig")
+print("faturalar.csv kaydedildi")
 
 
 ##################################################################
