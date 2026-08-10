@@ -1,19 +1,16 @@
 """
 ingestion/chunker.py
 
-Metni token bazlı, örtüşmeli (overlap'li) parçalara böler.
+Metni token bazlı, overlap'li parçalara böler.
 Plan hedefi: 300-500 token / chunk, %10-15 overlap.
 
 Token sayımı için tiktoken (cl100k_base) kullanılır — bu, gerçek embedding
-modelinin tokenizer'ıyla birebir aynı olmasa da (OpenAI/Gemini farklı
-tokenizer kullanabilir), tutarlı ve öngörülebilir bir chunk boyutu
+modelinin tokenizer'ıyla birebir aynı olmasa da tutarlı ve öngörülebilir bir chunk boyutu
 sağlamak için yeterli bir yaklaşımdır.
 
 Kullanım:
     from ingestion.chunker import chunkla, kayitlari_chunkla
-
     parcalar = chunkla("uzun bir metin ...")
-
     # loader'dan gelen kayıtları (dosya_adi, kategori, sayfa_no, metin)
     # chunk metadata'sıyla birlikte üretir:
     chunk_kayitlari = kayitlari_chunkla(kayitlar)
