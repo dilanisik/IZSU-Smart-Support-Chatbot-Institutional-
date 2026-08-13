@@ -5,18 +5,22 @@ Gün 10 — Semantik Arama ve RAG Zinciri
 
 Akış:
     soru -> soru_embedle (BGE-M3, dense+sparse) -> qdranttan_ara (hibrit, RRF)
-    -> esik_ile_filtrele -> prompt_olustur -> ollama_ile_yanitla -> yanit + kaynak atıfı.
+    -> esik_ile_filtrele -> prompt_olustur -> ollama_ile_yanitla -> yanit + kaynak atıfı
 
 embed_and_upload.py ile aynı BGE-M3 modelini, aynı encode() ayarlarıyla,
 aynı "dense"/"sparse" named vector isimleriyle ve "documents" koleksiyonunu
 kullanır — bu ikisi arasında herhangi bir tutarsızlık olursa arama sonuç
 döndürmez ya da anlamsız sonuç döner.
 
-Ollama sunucusu (10.100.17.144) soğuk başlarken modeli belleğe yüklemek tek
-başına ~150-200 sn sürebiliyor (ölçüldü: total_duration 189sn ve bunun 177sn'si
-load_duration). Bu yüzden hem timeout yüksek tutuluyor hem de keep_alive ile
-model yüklendikten sonra bellekte tutuluyor (30m) ki art arda sorularda bu maliyet
-tekrar ödenmesin.
+Ollama sunucusu (settings.ollama_url) soğuk başlarken modeli belleğe yüklemek
+tek başına ~150-200 sn sürebiliyor (ölçüldü: total_duration ~189sn, bunun
+~177sn'si load_duration). Bu yüzden hem timeout yüksek tutuluyor hem de
+keep_alive ile model yüklendikten sonra bellekte tutuluyor ki art arda
+sorularda bu maliyet tekrar ödenmesin.
+
+Tüm ayarlar (Ollama URL/model, eşik değeri, timeout, keep_alive) config.py
+üzerinden .env'den okunuyor — proje genelindeki merkezi konfigürasyon
+prensibiyle tutarlı.
 
 Kullanım:
     from retrieval.rag_chain import soruyu_yanitla
@@ -34,22 +38,15 @@ from logging_config import get_logger
 logger = get_logger(__name__)
 
 # ---------------------------------------------------------------------------
-# Ayarlar
+# Ayarlar — bunlar embed_and_upload.py ile hardcoded eşleşmesi gereken
+# teknik detaylar (koleksiyon adı, vector isimleri, top-k), o yüzden
+# config.py'ye taşınmadı; Ollama/eşik ayarları settings üzerinden geliyor.
 # ---------------------------------------------------------------------------
 COLLECTION_NAME = "documents"          # embed_and_upload.py ile aynı
 DENSE_VECTOR_NAME = "dense"            # embed_and_upload.py ile aynı
 SPARSE_VECTOR_NAME = "sparse"          # embed_and_upload.py ile aynı
 
-OLLAMA_URL = "http://10.100.17.144:11434/api/chat"
-OLLAMA_MODEL = "qwen3.5:27b"
-OLLAMA_TIMEOUT_SN = 300     # soğuk yükleme (180sn) + üretim süresi payı
-OLLAMA_KEEP_ALIVE = "30m"   # model yüklendikten sonra bellekte kalma süresi
-
-TOP_K_RETRIEVE = 5         # Qdrant'tan çekilecek ve doğrudan prompt'a verilecek chunk sayısı
-
-#  Gün 9'da düşük skorlu/bozuk chunk'ların
-# 0.60 civarında kaldığı gözlemlenmişti, o yüzden başlangıç eşiği 0.55.
-SCORE_THRESHOLD = 0.55
+TOP_K_RETRIEVE = 5                     # Qdrant'tan çekilecek ve doğrudan prompt'a verilecek chunk sayısı
 
 # ---------------------------------------------------------------------------
 # Model — modül import edilirken bir kere yüklenir (her sorguda değil)
@@ -93,7 +90,8 @@ def qdranttan_ara(dense_vec, sparse_vec, top_k: int = TOP_K_RETRIEVE):
     return sonuc.points  # her biri .score ve .payload (dosya_adi, kategori, sayfa_no, metin, ...) içerir
 
 
-def esik_ile_filtrele(points, esik: float = SCORE_THRESHOLD):
+def esik_ile_filtrele(points, esik: float = None):
+    esik = settings.rag_score_threshold if esik is None else esik
     filtrelenmis = [p for p in points if p.score >= esik]
     logger.info("Eşik filtrelemesi: %d/%d chunk kaldı (eşik=%.2f)", len(filtrelenmis), len(points), esik)
     return filtrelenmis
@@ -126,16 +124,16 @@ Yanıt:"""
 
 def ollama_ile_yanitla(prompt: str) -> str:
     payload = {
-        "model": OLLAMA_MODEL,
+        "model": settings.ollama_model,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
         # Model sunucuda soğuk (bellekte değil) olduğunda yükleme tek başına
         # 150-200 sn sürebiliyor (ölçüldü). keep_alive ile yükledikten sonra
         # bellekte tutulmasını istiyoruz ki art arda sorularda bu yükleme
         # maliyeti tekrar ödenmesin.
-        "keep_alive": OLLAMA_KEEP_ALIVE,
+        "keep_alive": settings.ollama_keep_alive,
     }
-    yanit = requests.post(OLLAMA_URL, json=payload, timeout=OLLAMA_TIMEOUT_SN)
+    yanit = requests.post(settings.ollama_url, json=payload, timeout=settings.ollama_timeout_sn)
     yanit.raise_for_status()
     return yanit.json()["message"]["content"]
 
@@ -173,7 +171,7 @@ def soruyu_yanitla(soru: str) -> dict:
 
 
 if __name__ == "__main__":
-    soru = "labaratuvar işlemleri nelerdir?"
+    soru = "laboratuvar işlemleri nelerdir?"
     sonuc = soruyu_yanitla(soru)
     print(sonuc["yanit"])
     print("\nKaynaklar:")
