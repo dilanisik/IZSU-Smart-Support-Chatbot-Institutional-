@@ -32,7 +32,9 @@ class Settings(BaseSettings):
     # --- RAG / Ollama (Gün 10) ---
     ollama_url: str = "http://10.100.17.144:11434/api/chat"
     ollama_model: str = "qwen3.5:27b"
-    ollama_timeout_sn: int = 300       # soğuk model yüklemesi ~150-200sn sürebiliyor, pay bırakıldı
+    ollama_timeout_sn: int = 600       # qwen3.5:27b "thinking" modunda 2700+ token üretebiliyor,
+                                        # ölçülen bir yanıt 297sn sürdü; 300sn'lik eski limite çok
+                                        # yakındı, güvenli marj için 600sn'ye çıkarıldı
     ollama_keep_alive: str = "30m"     # model yüklendikten sonra bellekte kalma süresi
     rag_score_threshold: float = 0.55  # Gün 9-10 testlerinde gözlemlenen skor dağılımına göre başlangıç değeri
 
