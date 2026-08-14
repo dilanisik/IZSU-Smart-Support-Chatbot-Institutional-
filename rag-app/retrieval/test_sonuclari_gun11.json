@@ -1,0 +1,550 @@
+[
+  {
+    "id": 1,
+    "kategori": "sss",
+    "soru": "Su kesintilerinde tanker ile su dağıtımı nasıl yapılır?",
+    "beklenen": "cevaplanabilir",
+    "not": "Gün 10'da zaten test edildi, sss_su-tuketimi.docx içinde net cevap var.",
+    "yanit": "Su kesintilerinde tanker ile su dağıtımı, öncelikli olarak hastanelere, okullara ve sağlık kuruluşlarına yapılmaktadır. Bunun dışındaki tanker ile su dağıtımı, muhtarlıklar ile koordineli bir şekilde yürütülmektedir.\n\nKaynak: sss_su-tuketimi.docx, sayfa -",
+    "kaynaklar": [
+      {
+        "dosya_adi": "sss_su-tuketimi.docx",
+        "sayfa_no": null,
+        "kategori": "sss",
+        "score": 1.0
+      }
+    ],
+    "kullanilan_chunk_sayisi": 1,
+    "sure_sn": 116.8,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 2,
+    "kategori": "sss",
+    "soru": "Su kesinti ilanlarında adresim neden çıkmıyor?",
+    "beklenen": "cevaplanabilir",
+    "not": "Aynı SSS dosyasında madde 1.",
+    "yanit": "Su dağıtım sisteminin altyapısı ile mahalli yapılanma birebir örtüşmediğinden kesinti ilanları sokak ve bina bazında detaylandırılamamaktadır. Bu durum nedeniyle aynı sokağın bir tarafı veya bölümü su alabilirken diğer tarafı su kesinti kapsamında kalabilmektedir.\n\nKaynak: sss_su-tuketimi.docx, sayfa -",
+    "kaynaklar": [
+      {
+        "dosya_adi": "sss_su-tuketimi.docx",
+        "sayfa_no": null,
+        "kategori": "sss",
+        "score": 1.0
+      },
+      {
+        "dosya_adi": "sss_su-tuketimi.docx",
+        "sayfa_no": null,
+        "kategori": "sss",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 188.5,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 3,
+    "kategori": "rapor",
+    "soru": "İZSU laboratuvarında test-analiz süreci nasıl işler?",
+    "beklenen": "cevaplanabilir",
+    "not": "Gün 10'da test edildi, faaliyet raporlarında var.",
+    "yanit": "İZSU laboratuvarında test-analiz süreci, Laboratuvar Yönetim Sistemi kapsamında şu şekilde işler: Su kaynaklarından, arıtma tesislerinden, depolardan, konut ve işletmelerden, içme suyu şebekesinden, memba sularından, atık sulardan ve düzenli alınan diğer su örnekleme noktalarından gelen numunelerin tanımlanmış çeşitli standart ve yönetmeliklere uygunluğunun tespiti amacıyla yürütülür. Süreç; İZSU laboratuvarında test-analiz talebinin ve bu talebin örneklerinin (numunelerinin) kabul edilmesiyle başlayarak Test-Analiz Hizmet Raporunun hazırlanmasıyla tamamlanır.\n\nKaynak: rapor_2023-Yılı-Faaliyet-Raporu.pdf, sayfa 28\nKaynak: plan_2025-2029-Stratejik-Plani-TR.pdf, sayfa 50",
+    "kaynaklar": [
+      {
+        "dosya_adi": "rapor_2023-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 28,
+        "kategori": "rapor",
+        "score": 0.75
+      },
+      {
+        "dosya_adi": "plan_2025-2029-Stratejik-Plani-TR.pdf",
+        "sayfa_no": 50,
+        "kategori": "plan",
+        "score": 0.6666667
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 258.0,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 4,
+    "kategori": "rapor",
+    "soru": "Son yıllarda su kayıp oranı yüzde kaçtır?",
+    "beklenen": "cevaplanabilir",
+    "not": "Faaliyet raporlarında geçiyor olmalı, 2012 raporunda %34,51 görülmüştü.",
+    "yanit": "Sağlanan bağlama göre, İzmir Su ve Kanalizasyon İdaresi verilerine dayanan yıllık su kayıp-kaçak oranları aşağıdaki gibidir:\n\n*   **2025 Yılı:** %24,74\n*   **2024 Yılı:** %26,77\n*   **2023 Yılı:** %27,72\n\nVeriler, son yıllarda kayıp oranlarında azalma eğilimi olduğunu göstermektedir. Ayrıca 11 ilçe özelinde 2025 Faaliyet Raporu'nda bu oranın %27,95'e inmiş olduğu da belirtilmiştir.\n\nKaynak: rapor_2025-Yılı-Faaliyet-Raporu.pdf, sayfa 45",
+    "kaynaklar": [
+      {
+        "dosya_adi": "rapor_2022-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 80,
+        "kategori": "rapor",
+        "score": 0.5
+      },
+      {
+        "dosya_adi": "rapor_2025-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 45,
+        "kategori": "rapor",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 358.8,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 6,
+    "kategori": "sozlesme",
+    "soru": "Su abonelik sözleşmesi nasıl feshedilir?",
+    "beklenen": "kısmen",
+    "not": "sozlesme_ dosyalarında olabilir, emin değiliz — test et.",
+    "yanit": "Abonelik sözleşmesi, abone tarafından İdareye ilişik kesme talebi verilmesi suretiyle feshedilebilir; bu bildirim aynı zamanda abonenin fesih beyanı yerine geçer ve İdare suyu kapatır. Ayrıca herhangi bir sebeple aboneliğin bulunduğu yapının yıkılması durumunda mevcut abonelik İdare tarafından iptal edilir. Borcunu ödemeyen abonelerde ise sayacın söküldükten sonra sözleşme feshedilir.\n\nKaynak: yonetmelik_Tarifeler-ve-Abone-Hizmetleri-Yonetmeligi.pdf, sayfa 9\nKaynak: yonetmelik_Tarifeler-ve-Abone-Hizmetleri-Yonetmeligi.pdf, sayfa 18",
+    "kaynaklar": [
+      {
+        "dosya_adi": "yonetmelik_Tarifeler-ve-Abone-Hizmetleri-Yonetmeligi.pdf",
+        "sayfa_no": 9,
+        "kategori": "yonetmelik",
+        "score": 0.75
+      },
+      {
+        "dosya_adi": "yonetmelik_Tarifeler-ve-Abone-Hizmetleri-Yonetmeligi.pdf",
+        "sayfa_no": 9,
+        "kategori": "yonetmelik",
+        "score": 0.6666667
+      },
+      {
+        "dosya_adi": "yonetmelik_Tarifeler-ve-Abone-Hizmetleri-Yonetmeligi.pdf",
+        "sayfa_no": 18,
+        "kategori": "yonetmelik",
+        "score": 0.5833334
+      }
+    ],
+    "kullanilan_chunk_sayisi": 3,
+    "sure_sn": 459.6,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 7,
+    "kategori": "duyuru",
+    "soru": "Planlı su kesintisi duyuruları nereden takip edilebilir?",
+    "beklenen": "cevaplanabilir",
+    "not": "SSS ve duyuru_ dosyalarında olmalı (izsu.gov.tr üyeliği vb.).",
+    "yanit": "Planlı su kesintisi duyuruları; iOS ve Android işletim sistemlerine sahip akıllı telefonlar için geliştirilen mobil uygulama üzerinden takip edilebilir. Ayrıca www.izsu.gov.tr adresine üye/abone olunması halinde, planlı su kesintileri abonelerin cep telefonlarına SMS yolu ile bildirilmektedir.\n\nKaynak: program_2020-Performans-Programi.pdf, sayfa 26; sss_su-tuketimi.docx, sayfa -",
+    "kaynaklar": [
+      {
+        "dosya_adi": "program_2020-Performans-Programi.pdf",
+        "sayfa_no": 26,
+        "kategori": "program",
+        "score": 0.5
+      },
+      {
+        "dosya_adi": "sss_su-tuketimi.docx",
+        "sayfa_no": null,
+        "kategori": "sss",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 457.3,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 8,
+    "kategori": "plan",
+    "soru": "İZSU su dağıtım planlamasını nasıl yapıyor?",
+    "beklenen": "cevaplanabilir",
+    "not": "2011 faaliyet raporunda kısa/uzun vadeli planlama anlatılıyor, Gün 10'da görüldü.",
+    "yanit": "İZSU, su dağıtım ve ihtiyaç temini ile ilgili planlamaları **Etüd ve Plan Dairesi Başkanlığı** aracılığıyla gerçekleştirir [1]. Bu birim; genel müdürlük sınırları içindeki yerleşim alanlarının su ihtiyaçlarını karşılamak için gerekli altyapı sistemlerini ve tesislerini planlar, planlamalara göre öncelikli yatırımların projelerini yapar veya yaptırmır [1]. Dağıtım sistemi (içmesuyu) kapsamında şebeke hattı, pompa istasyonu ve benzerleri için yapıma esas uygulama projeleri ile elektrik, mekanik projelerinin yanı sıra jeolojik etüdlerini de hazırlar veya hazırlatır [1].\n\n[1]",
+    "kaynaklar": [
+      {
+        "dosya_adi": "rapor_2011-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 303,
+        "kategori": "rapor",
+        "score": 0.8333334
+      },
+      {
+        "dosya_adi": "program_2012-Performans-Programi.pdf",
+        "sayfa_no": 39,
+        "kategori": "program",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 416.8,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 12,
+    "kategori": "program",
+    "soru": "Su tasarrufu için hangi programlar yürütülüyor?",
+    "beklenen": "kısmen",
+    "not": "program_ dosyalarında aranmalı.",
+    "yanit": "Sağlanan bağlama göre su tasarrufu ile ilgili olarak \"Toprak ve su kaynaklarının kullanımı ve yönetimi\" adlı program yürütülmektedir. Bu ana programın altında ise \"Sürdürülebilir su yönetimine yönelik araştırma ve eğitim\" alt programı bulunmaktadır. Bu kapsamda \"Su tasarrufuna yönelik etkinlikler ve İZSU hizmetleri bilgilendirme çalışmaları\" faaliyetleri planlanmıştır. Ayrıca bağlamda 2007 yılında başlatılan bir su tasarrufu kampanyasından da bahsedilmektedir.\n\nKaynak: program_2026-Performans-Programi.pdf, sayfa 103; rapor_2007-Yılı-Faaliyet-Raporu.pdf, sayfa 147",
+    "kaynaklar": [
+      {
+        "dosya_adi": "program_2026-Performans-Programi.pdf",
+        "sayfa_no": 103,
+        "kategori": "program",
+        "score": 0.75
+      },
+      {
+        "dosya_adi": "rapor_2007-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 147,
+        "kategori": "rapor",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 392.3,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 13,
+    "kategori": "sss",
+    "soru": "Faturama itiraz etmek istiyorum, süreç nasıl işliyor?",
+    "beklenen": "kısmen",
+    "not": "SSS/sozlesme dosyalarında olabilir, planın örnek senaryolarından biri (itiraz süreci).",
+    "yanit": "Sağlanan dokümanlara göre İZSU faturasına itiraz süreci, itirazın nedenine (sayaç okuması veya yüksek tüketim) göre farklılık göstermektedir:\n\n1.  **Sayaç Okuması Kaynaklı İtirazlar:** Sayaç okumasından sonraki günden itibaren 2 gün içerisinde yapılması gerekmektedir.\n2.  **Yüksek Tüketim Kaynaklı İtirazlar:** Fatura yüksekse öncelikle iç tesisatta kaçak veya arıza kontrolü yapılmalıdır. Kaçak ya da arıza tespit edilmezse, abone bağlı olduğu İZSU şubesine başvurarak sayacın Sanayi ve Teknoloji İl Müdürlüğü'ne muayeneye gönderilmesi talebinde bulunmalıdır.\n\nKaynak: hizmetler_genel-fatura-bilgileri.docx, sayfa -",
+    "kaynaklar": [
+      {
+        "dosya_adi": "hizmetler_genel-fatura-bilgileri.docx",
+        "sayfa_no": null,
+        "kategori": "hizmetler",
+        "score": 0.8333334
+      },
+      {
+        "dosya_adi": "sss_fatura-islemleri.docx",
+        "sayfa_no": null,
+        "kategori": "sss",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 436.7,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 15,
+    "kategori": "yok",
+    "soru": "Su kesintisi durumunda tazminat hakkım var mı?",
+    "beklenen": "cevapsiz",
+    "not": "Gün 10'da test edildi: dokümanlarda doğrudan/net cevap yok, model 'bilmiyorum' demeli.",
+    "yanit": "Bu konuda elimde yeterli bilgi yok.",
+    "kaynaklar": [
+      {
+        "dosya_adi": "rapor_2013-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 96,
+        "kategori": "rapor",
+        "score": 1.0
+      }
+    ],
+    "kullanilan_chunk_sayisi": 1,
+    "sure_sn": 133.7,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 16,
+    "kategori": "yok",
+    "soru": "İZSU'nun yurt dışında şubesi var mı?",
+    "beklenen": "cevapsiz",
+    "not": "Kurgusal/alakasız soru, kesinlikle dokümanlarda yok — halüsinasyon testi.",
+    "yanit": "Bu konuda elimde yeterli bilgi yok.",
+    "kaynaklar": [
+      {
+        "dosya_adi": "rapor_2020-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 1,
+        "kategori": "rapor",
+        "score": 0.5
+      },
+      {
+        "dosya_adi": "rapor_2021-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 32,
+        "kategori": "rapor",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 83.4,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 17,
+    "kategori": "yok",
+    "soru": "Faturamı kripto para ile ödeyebilir miyim?",
+    "beklenen": "cevapsiz",
+    "not": "Absürt/güncel olmayan konu, dokümanlarda olmamalı — halüsinasyon testi.",
+    "yanit": "Bu konuda elimde yeterli bilgi yok.",
+    "kaynaklar": [
+      {
+        "dosya_adi": "rapor_2020-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 33,
+        "kategori": "rapor",
+        "score": 0.5
+      },
+      {
+        "dosya_adi": "program_2016-Performans-Programi.pdf",
+        "sayfa_no": 37,
+        "kategori": "program",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 89.9,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 18,
+    "kategori": "yok",
+    "soru": "İZSU genel müdürünün cep telefonu numarası nedir?",
+    "beklenen": "cevapsiz",
+    "not": "Kişisel veri, dokümanlarda olmamalı ve model bunu üretmemeli — güvenlik + halüsinasyon testi.",
+    "yanit": "Bu konuda elimde yeterli bilgi yok.",
+    "kaynaklar": [
+      {
+        "dosya_adi": "duyuru_201023-sayili-Egitim-Genelgesi.pdf",
+        "sayfa_no": 2,
+        "kategori": "duyuru",
+        "score": 0.5
+      },
+      {
+        "dosya_adi": "program_2009-Performans-Programi.pdf",
+        "sayfa_no": 25,
+        "kategori": "program",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 72.8,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 19,
+    "kategori": "yok",
+    "soru": "2030 yılı için planlanan su tarifesi ne kadar olacak?",
+    "beklenen": "cevapsiz",
+    "not": "Gelecek tarihli, dokümanlarda olamaz — halüsinasyon testi.",
+    "yanit": "Bu konuda elimde yeterli bilgi yok.",
+    "kaynaklar": [
+      {
+        "dosya_adi": "plan_2015-2019-Stratejik-Plani.pdf",
+        "sayfa_no": 82,
+        "kategori": "plan",
+        "score": 0.8333334
+      },
+      {
+        "dosya_adi": "plan_2025-2029-Stratejik-Plani-TR.pdf",
+        "sayfa_no": 90,
+        "kategori": "plan",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 81.9,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 20,
+    "kategori": "sss",
+    "soru": "Suyum akmıyor, nereden bilgi alabilirim?",
+    "beklenen": "cevaplanabilir",
+    "not": "sss_su-tuketimi.docx madde 3, Gün 10'da context'te görüldü.",
+    "yanit": "Su kesintileri belirli bir program dâhilinde ve uzun süreli olduğundan basın yolu ile önceden duyurulmaktadır. Ayrıca www.izsu.gov.tr adresine üye/abone olunması halinde, planlı su kesintileri ile borç nedeni ile yapılacak kesintiler abonelerin cep telefonlarına SMS yolu ile ücretsiz olarak bildirilmektedir. Önceden haber verilmesi mümkün olmayan ani arızalara müdahale amacıyla yapılan su kesintileri 185 numaralı telefondan veya www.izsu.gov.tr adresinden su kesintileri kısmından öğrenilebilir.\n\nKaynak: sss_su-tuketimi.docx, sayfa -",
+    "kaynaklar": [
+      {
+        "dosya_adi": "sss_su-tuketimi.docx",
+        "sayfa_no": null,
+        "kategori": "sss",
+        "score": 0.8333334
+      },
+      {
+        "dosya_adi": "sss_su-tuketimi.docx",
+        "sayfa_no": null,
+        "kategori": "sss",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 356.8,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 5,
+    "kategori": "kanun",
+    "soru": "2560 sayılı kanun İZSU'nun kuruluş amacını nasıl tanımlıyor?",
+    "beklenen": "cevaplanabilir",
+    "not": "kanun_ önekli dosyalarda aranmalı.",
+    "yanit": "Sağlanan bağlamda, 2560 sayılı kanunun İZSU'nun \"kuruluş amacı\"nı doğrudan tanımlayan spesifik bir ifade yer almamaktadır; ancak söz konusu kanun doğrultusunda İZSU'nun **başlıca görevleri** belirtilmiştir. Metne göre bu görevler şunlardır:\n\n*   İçme ve kullanma suyunu temin etmek,\n*   Kullanılmış atık suları toplamak, arıtmak ve uzaklaştırmak,\n*   Su kaynaklarını ve içme suyu havzalarını korumak, temizlemek ve bu maksatla gerekli önlemleri almak ile bu hizmetler ile ilgili olan diğer konular.\n\nBağlamda ayrıca Genel Kurul yetkileri arasında \"Kuruluş amacına dönük çalışmaların gerekli kılması\" ifadesi geçmekle birlikte, bu amaçtan neyin kastedildiği açıklanmamıştır.\n\nKaynak: program_2024-Performans-Programi.pdf, sayfa 21",
+    "kaynaklar": [
+      {
+        "dosya_adi": "program_2017-Performans-Programi.pdf",
+        "sayfa_no": 21,
+        "kategori": "program",
+        "score": 0.5
+      },
+      {
+        "dosya_adi": "program_2024-Performans-Programi.pdf",
+        "sayfa_no": 21,
+        "kategori": "program",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 410.8,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 9,
+    "kategori": "kurumsal",
+    "soru": "İZSU'nun kurumsal yapısı ve bağlı daire başkanlıkları nelerdir?",
+    "beklenen": "cevaplanabilir",
+    "not": "kurumsal_ dosyalarında aranmalı.",
+    "yanit": "Bağlamda İZSU'nun kurumsal yapısı hakkında genel bilgiler ve yönetim organlarına dair detaylar yer almaktadır; ancak bağlı daire başkanlıklarının spesifik isimleri metinde belirtilmemiştir.\n\nMevcut bilgilere göre kurumsal yapı şu şekilde tanımlanmaktadır:\n*   **Kuruluş Niteliği:** İzmir Büyükşehir Belediyesine bağlı müstakil bütçeli, kamu tüzel kişiliğine haiz bir kuruluştur.\n*   **Teşkilat Yapısı:** Yönetim ve Karar Organları, Ana Hizmet Birimleri ile Danışma, Denetim ve Yardımcı hizmet birimlerinden meydana gelir.\n*   **Yönetim ve Karar Organları:**\n    *   **Genel Kurul:** İzmir Büyükşehir Belediye Meclisi bu görevi üstlenir; her yıl Mayıs ve Kasım aylarında özel gündem ile toplanır.\n    *   **Yönetim Kurulu:** Bir başkan (Büyükşehir Belediye Başkanı) ve beş üyeden oluşur.\n\nBağlamda \"Daire Başkanlıkları\" başlığı altında somut birimler listelenmemiştir, yalnızca genel olarak \"Ana Hizmet Birimleri\" ifadesi kullanılmıştır. Bağlamda bununla ilgili sadece bu bilgi var, daha fazla detay yok.\n\nKaynak: program_2023-Performans-Programi.pdf, sayfa 28",
+    "kaynaklar": [
+      {
+        "dosya_adi": "program_2023-Performans-Programi.pdf",
+        "sayfa_no": 28,
+        "kategori": "program",
+        "score": 0.5
+      },
+      {
+        "dosya_adi": "plan_2020-2024-Stratejik-Plani.pdf",
+        "sayfa_no": 23,
+        "kategori": "plan",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 244.9,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 10,
+    "kategori": "mali",
+    "soru": "İZSU'nun mali yapısı hakkında genel bilgi verir misin?",
+    "beklenen": "kısmen",
+    "not": "mali_ dosyaları var ama içerik derinliği belirsiz.",
+    "yanit": "Sağlanan bağlamda İZSU'nun mali yapısına (örneğin sermaye, borçlanma veya gelir kalemleri) dair doğrudan detaylı veri bulunmamakla birlikte, mali işlemlerin yürütüldüğü sistem hakkında bilgi mevcuttur. Bağlama göre İZSU'da \"Mali İşlemler\" sistemi kullanılmakta ve bu sistem üzerinden tüm mali işlemlerin yasal düzenlemelere uygun olarak gerçekleştirildiği, genel muhasebe kayıtlarının oluştuğu ve yasal defterlerin hazırlandığı ifade edilmektedir. Bağlamda bununla ilgili sadece bu bilgi var, daha fazla detay yok.\n\nKaynak: rapor_2022-Yılı-Faaliyet-Raporu.pdf, sayfa 25",
+    "kaynaklar": [
+      {
+        "dosya_adi": "rapor_2020-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 1,
+        "kategori": "rapor",
+        "score": 0.5
+      },
+      {
+        "dosya_adi": "rapor_2022-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 25,
+        "kategori": "rapor",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 258.8,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 11,
+    "kategori": "politika",
+    "soru": "İZSU'nun su kalitesi politikası nedir?",
+    "beklenen": "kısmen",
+    "not": "politika_ dosyalarında aranmalı, çok spesifik olabilir.",
+    "yanit": "Bağlamda İZSU'nun özel olarak \"su kalitesi politikası\" adında ayrı bir tanım bulunmamakla birlikte, kurumun su hizmetleriyle ilgili \"temel politika\"sı belirtilmektedir. Bu temel politika; Büyükşehir Belediyesi sınırları içinde yaşayan halkın içme, kullanma ve endüstriyel su ihtiyaçlarının sağlanması, dağıtılması, kullanılmış su ile yağmur sularının uzaklaştırılması, çevreye duyarlı bir biçimde arıtılması ve su havzalarının korunmasını kapsamaktadır. Ayrıca kurumun misyonu kapsamında içme suyu sorunlarının çözülmesinde etkin ve başarılı, güvenle bakılan ve çevreye saygı duyan bir kurum olmak hedeflenmektedir. Bağlamda bu genel politika bilgisi dışında spesifik su kalitesi politikasına dair ek detay bulunmamaktadır.\n\nKaynak: program_2012-Performans-Programi.pdf, sayfa 45",
+    "kaynaklar": [
+      {
+        "dosya_adi": "program_2012-Performans-Programi.pdf",
+        "sayfa_no": 45,
+        "kategori": "program",
+        "score": 1.0
+      }
+    ],
+    "kullanilan_chunk_sayisi": 1,
+    "sure_sn": 331.0,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  },
+  {
+    "id": 14,
+    "kategori": "rapor",
+    "soru": "İZSU'nun abone sayısı yıllara göre nasıl değişmiş?",
+    "beklenen": "kısmen",
+    "not": "Faaliyet raporlarında tablo halinde olabilir — pypdf tablo çıkarımı sorunu burada devreye girebilir (Gün 9'da not edilen kısıt).",
+    "yanit": "Bağlamda İZSU abone sayılarının yıllara göre detaylı değişim grafiği bulunmamakla birlikte, 2010 ve 2011 yıllarına ait sınırlı veri mevcuttur:\n\n*   **2010 yılı:** Yıl sonu itibariyle toplam abone sayısı **1.113.479**'a ulaşmıştır.\n*   **2011 yılı:** Bu yıl içerisinde **44.377** adet yeni abonenin su bağlantısı yapılmıştır.\n\nBağlamda 2010 öncesi veya sonrası yıllara ait toplam abone sayısı değişimi ile ilgili somut bilgi bulunmamaktadır; sadece yukarıdaki veriler aktarılabilmektedir.\n\nKaynak: rapor_2010-Yılı-Faaliyet-Raporu.pdf, sayfa 72\nKaynak: rapor_2011-Yılı-Faaliyet-Raporu.pdf, sayfa 83",
+    "kaynaklar": [
+      {
+        "dosya_adi": "rapor_2010-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 72,
+        "kategori": "rapor",
+        "score": 0.7
+      },
+      {
+        "dosya_adi": "rapor_2011-Yılı-Faaliyet-Raporu.pdf",
+        "sayfa_no": 83,
+        "kategori": "rapor",
+        "score": 0.5
+      }
+    ],
+    "kullanilan_chunk_sayisi": 2,
+    "sure_sn": 171.8,
+    "hata": null,
+    "retrieval_dogru": null,
+    "halusinasyon_var_mi": null,
+    "manuel_not": ""
+  }
+]

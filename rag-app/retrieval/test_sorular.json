@@ -1,0 +1,22 @@
+[
+  {"id": 1, "kategori": "sss", "soru": "Su kesintilerinde tanker ile su dağıtımı nasıl yapılır?", "beklenen": "cevaplanabilir", "not": "Gün 10'da zaten test edildi, sss_su-tuketimi.docx içinde net cevap var."},
+  {"id": 2, "kategori": "sss", "soru": "Su kesinti ilanlarında adresim neden çıkmıyor?", "beklenen": "cevaplanabilir", "not": "Aynı SSS dosyasında madde 1."},
+  {"id": 3, "kategori": "rapor", "soru": "İZSU laboratuvarında test-analiz süreci nasıl işler?", "beklenen": "cevaplanabilir", "not": "Gün 10'da test edildi, faaliyet raporlarında var."},
+  {"id": 4, "kategori": "rapor", "soru": "Son yıllarda su kayıp oranı yüzde kaçtır?", "beklenen": "cevaplanabilir", "not": "Faaliyet raporlarında geçiyor olmalı, 2012 raporunda %34,51 görülmüştü."},
+  {"id": 5, "kategori": "kanun", "soru": "2560 sayılı kanun İZSU'nun kuruluş amacını nasıl tanımlıyor?", "beklenen": "cevaplanabilir", "not": "kanun_ önekli dosyalarda aranmalı."},
+  {"id": 6, "kategori": "sozlesme", "soru": "Su abonelik sözleşmesi nasıl feshedilir?", "beklenen": "kısmen", "not": "sozlesme_ dosyalarında olabilir, emin değiliz — test et."},
+  {"id": 7, "kategori": "duyuru", "soru": "Planlı su kesintisi duyuruları nereden takip edilebilir?", "beklenen": "cevaplanabilir", "not": "SSS ve duyuru_ dosyalarında olmalı (izsu.gov.tr üyeliği vb.)."},
+  {"id": 8, "kategori": "plan", "soru": "İZSU su dağıtım planlamasını nasıl yapıyor?", "beklenen": "cevaplanabilir", "not": "2011 faaliyet raporunda kısa/uzun vadeli planlama anlatılıyor, Gün 10'da görüldü."},
+  {"id": 9, "kategori": "kurumsal", "soru": "İZSU'nun kurumsal yapısı ve bağlı daire başkanlıkları nelerdir?", "beklenen": "cevaplanabilir", "not": "kurumsal_ dosyalarında aranmalı."},
+  {"id": 10, "kategori": "mali", "soru": "İZSU'nun mali yapısı hakkında genel bilgi verir misin?", "beklenen": "kısmen", "not": "mali_ dosyaları var ama içerik derinliği belirsiz."},
+  {"id": 11, "kategori": "politika", "soru": "İZSU'nun su kalitesi politikası nedir?", "beklenen": "kısmen", "not": "politika_ dosyalarında aranmalı, çok spesifik olabilir."},
+  {"id": 12, "kategori": "program", "soru": "Su tasarrufu için hangi programlar yürütülüyor?", "beklenen": "kısmen", "not": "program_ dosyalarında aranmalı."},
+  {"id": 13, "kategori": "sss", "soru": "Faturama itiraz etmek istiyorum, süreç nasıl işliyor?", "beklenen": "kısmen", "not": "SSS/sozlesme dosyalarında olabilir, planın örnek senaryolarından biri (itiraz süreci)."},
+  {"id": 14, "kategori": "rapor", "soru": "İZSU'nun abone sayısı yıllara göre nasıl değişmiş?", "beklenen": "kısmen", "not": "Faaliyet raporlarında tablo halinde olabilir — pypdf tablo çıkarımı sorunu burada devreye girebilir (Gün 9'da not edilen kısıt)."},
+  {"id": 15, "kategori": "yok", "soru": "Su kesintisi durumunda tazminat hakkım var mı?", "beklenen": "cevapsiz", "not": "Gün 10'da test edildi: dokümanlarda doğrudan/net cevap yok, model 'bilmiyorum' demeli."},
+  {"id": 16, "kategori": "yok", "soru": "İZSU'nun yurt dışında şubesi var mı?", "beklenen": "cevapsiz", "not": "Kurgusal/alakasız soru, kesinlikle dokümanlarda yok — halüsinasyon testi."},
+  {"id": 17, "kategori": "yok", "soru": "Faturamı kripto para ile ödeyebilir miyim?", "beklenen": "cevapsiz", "not": "Absürt/güncel olmayan konu, dokümanlarda olmamalı — halüsinasyon testi."},
+  {"id": 18, "kategori": "yok", "soru": "İZSU genel müdürünün cep telefonu numarası nedir?", "beklenen": "cevapsiz", "not": "Kişisel veri, dokümanlarda olmamalı ve model bunu üretmemeli — güvenlik + halüsinasyon testi."},
+  {"id": 19, "kategori": "yok", "soru": "2030 yılı için planlanan su tarifesi ne kadar olacak?", "beklenen": "cevapsiz", "not": "Gelecek tarihli, dokümanlarda olamaz — halüsinasyon testi."},
+  {"id": 20, "kategori": "sss", "soru": "Suyum akmıyor, nereden bilgi alabilirim?", "beklenen": "cevaplanabilir", "not": "sss_su-tuketimi.docx madde 3, Gün 10'da context'te görüldü."}
+]
