@@ -3,10 +3,15 @@ sql_engine/text_to_sql.py
 
 Gün 12 — Text-to-SQL Motoru (LangChain + LangGraph)
 
-Bu motor LangChain (SQLDatabase + ChatOllama) ve LangGraph
-(çok adımlı state graph: üret -> güvenlik kontrolü -> çalıştır) üzerine kuruldu.
-Gün 13'te bu graph'a bir "sonucu_doğal_dile_çevir" node'u eklenecek — o yüzden
-State ve graph yapısı, o adımın kolayca eklenebileceği şekilde tasarlandı.
+Patronun talimatıyla bu motor LangChain (SQLDatabase + ChatOllama) ve LangGraph
+(çok adımlı state graph: üret -> güvenlik kontrolü -> çalıştır -> doğal dile
+çevir) üzerine kuruldu.
+
+Gün 13 güncellemesi: sql_engine/result_formatter.py'deki
+sonucu_dogal_dile_cevir() fonksiyonu, calistir node'undan sonra çalışan yeni
+bir node olarak graph'a bağlandı. SqlAgentState artık dogal_dil_yanit alanını
+da taşıyor. Hata durumunda (güvensiz SQL ya da çalıştırma hatası) bu adım
+atlanır — gereksiz bir LLM çağrısı yapılmaz.
 
 Şema, db/init.sql (Gün 4) ile BİREBİR eşleştirildi:
     musteriler(musteri_id, ad, soyad, tc_no, abonelik_no, sayac_no, kayit_tarihi)
@@ -17,6 +22,11 @@ State ve graph yapısı, o adımın kolayca eklenebileceği şekilde tasarlandı
     faturalar(fatura_id, musteri_id, tuketim_id, donem, tuketim_m3, tutar,
               son_odeme_tarihi, odendi_mi)
 
+ÖNEMLİ farklar (önceki, yanlış tahmine dayalı taslaktan):
+    - su_tuketimi'nde "donem"/"sayac_okuma" YOK; "ilk_endeks", "son_endeks",
+      "okuma_tarihi" VAR. Zaman bazlı tüketim sorguları okuma_tarihi ile veya
+      faturalar.donem ile yapılmalı.
+    - faturalar'da "kdv_tutari" YOK, ama "tuketim_id" (su_tuketimi'ne FK) VAR.
 
 Kullanım:
     from sql_engine.text_to_sql import soruyu_sqlle_yanitla
@@ -35,6 +45,7 @@ from langgraph.graph import StateGraph, END
 
 from config import settings
 from logging_config import get_logger
+from sql_engine.result_formatter import sonucu_dogal_dile_cevir
 
 logger = get_logger(__name__)
 
@@ -248,7 +259,7 @@ class SqlAgentState(TypedDict):
     guvenli_mi: Optional[bool]
     hata: Optional[str]
     sonuc: Optional[pd.DataFrame]
-    # Gün 13'te eklenecek: dogal_dil_yanit: Optional[str]
+    dogal_dil_yanit: Optional[str]  # Gün 13'te eklendi
 
 
 def _sql_uret_node(state: SqlAgentState) -> dict:
@@ -282,6 +293,18 @@ def _sql_calistir_node(state: SqlAgentState) -> dict:
         return {"hata": f"Sorgu çalıştırılamadı: {e}"}
 
 
+def _dogal_dile_cevir_node(state: SqlAgentState) -> dict:
+    """Gün 13 — DataFrame'i, sql_engine/result_formatter.py'deki fonksiyonla
+    doğal dil özetine çevirir. Bu node sadece güvenli+başarılı çalıştırmadan
+    sonra tetiklenir (bkz. _guvenlik_sonrasi_yonlendirme ve graph kenarları)."""
+    try:
+        yanit = sonucu_dogal_dile_cevir(state["soru"], state["sonuc"])
+        return {"dogal_dil_yanit": yanit}
+    except Exception as e:
+        logger.error("Doğal dile çevirme hatası: %s", e)
+        return {"hata": f"Sonuç doğal dile çevrilemedi: {e}"}
+
+
 def _guvenlik_sonrasi_yonlendirme(state: SqlAgentState) -> str:
     return "calistir" if state.get("guvenli_mi") else END
 
@@ -290,11 +313,13 @@ _graph_builder = StateGraph(SqlAgentState)
 _graph_builder.add_node("uret", _sql_uret_node)
 _graph_builder.add_node("guvenlik", _guvenlik_kontrolu_node)
 _graph_builder.add_node("calistir", _sql_calistir_node)
+_graph_builder.add_node("dogal_dile_cevir", _dogal_dile_cevir_node)
 
 _graph_builder.set_entry_point("uret")
 _graph_builder.add_edge("uret", "guvenlik")
 _graph_builder.add_conditional_edges("guvenlik", _guvenlik_sonrasi_yonlendirme, {"calistir": "calistir", END: END})
-_graph_builder.add_edge("calistir", END)
+_graph_builder.add_edge("calistir", "dogal_dile_cevir")
+_graph_builder.add_edge("dogal_dile_cevir", END)
 
 _sql_agent_graph = _graph_builder.compile()
 
@@ -302,21 +327,29 @@ _sql_agent_graph = _graph_builder.compile()
 def soruyu_sqlle_yanitla(soru: str) -> dict:
     """
     Router (Gün 14) tarafından çağrılacak ana giriş noktası.
-    Dönen dict: {"sql": str, "sonuc": DataFrame | None, "hata": str | None}
+    Dönen dict: {"sql": str, "sonuc": DataFrame | None, "dogal_dil_yanit": str | None, "hata": str | None}
     """
-    sonuc_state = _sql_agent_graph.invoke({"soru": soru, "sql": None, "guvenli_mi": None, "hata": None, "sonuc": None})
+    baslangic_state = {
+        "soru": soru, "sql": None, "guvenli_mi": None,
+        "hata": None, "sonuc": None, "dogal_dil_yanit": None,
+    }
+    sonuc_state = _sql_agent_graph.invoke(baslangic_state)
     return {
         "sql": sonuc_state.get("sql"),
         "sonuc": sonuc_state.get("sonuc"),
+        "dogal_dil_yanit": sonuc_state.get("dogal_dil_yanit"),
         "hata": sonuc_state.get("hata"),
     }
 
 
 if __name__ == "__main__":
-    soru = "su tüketimi bu yıl en fazla olan 5 kişi kimler?"
+    soru = "ID 56 olan müşterinin adresi neresidir?"
     sonuc = soruyu_sqlle_yanitla(soru)
     print("SQL:", sonuc["sql"])
     if sonuc["hata"]:
         print("HATA:", sonuc["hata"])
     else:
-        print(sonuc["sonuc"])
+        print("\nDoğal dil yanıtı:")
+        print(sonuc["dogal_dil_yanit"])
+        print("\nHam sonuç (ilk 5 satır):")
+        print(sonuc["sonuc"].head())
